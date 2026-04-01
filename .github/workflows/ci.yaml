@@ -1,0 +1,35 @@
+name: python
+
+on:
+  pull_request:
+  push:
+    tags:
+      - "*"
+    branches:
+      - main
+
+jobs:
+  style-and-unittests:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.10.12-slim
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+      - name: Poetry sources cache
+        uses: actions/cache@v5
+        env:
+          cache-name: poetry-sources
+        with:
+            path: ~/.cache/pypoetry
+            key: ${{ runner.os}}-${{ env.cache-name}}-${{ hashFiles('poetry.lock') }}
+      - run: |
+          pip install poetry
+          poetry sync
+      - run: poetry check
+      - run: poetry run ruff check --select I animotion tests
+      - run: poetry run ruff check animotion tests
+      - run: poetry run mypy
+      - run: poetry run pytest

@@ -1,0 +1,36 @@
+
+logging:
+  version: 1
+  formatters:
+    formatter:
+      format: "[%(asctime)s] [%(levelname)s] [%(name)s]: %(message)s"
+  handlers:
+    console:
+      class: "logging.StreamHandler"
+      level: "DEBUG"
+      formatter: "formatter"
+      stream: "ext://sys.stderr"
+  root:
+    handlers: ["console"]
+  loggers:
+    animotion:
+      level: "INFO"
+    # animotion.domain.state_machine:
+    #   level: "INFO"
+    # animotion.domain.event_handler:
+    #   level: "INFO"
+    # animotion.domain.event_handler.video_recorder:
+    #   level: "INFO"
+    # animotion.domain.trigger:
+    #   level: "INFO"
+    # animotion.domain.trigger.difference:
+    #   level: "INFO"
+    # animotion.domain.trigger.time:
+    #   level: "INFO"
+
+trigger:
+  threshold: 0.15
+  delay_in_seconds: 0.015
+
+app:
+  video_target_path: "/tmp/foo"

@@ -28,6 +28,18 @@ logging:
     # animotion.domain.trigger.time:
     #   level: "INFO"
 
+camera:
+  video:
+    resolution: [1280, 720]
+    format: "RGB888"
+    encoder: "H264"
+    bitrate: 1000000
+    quality: "medium"
+
+  preview:
+    resolution: [320, 240]
+    format: "YUV420"
+
 trigger:
   threshold: 0.15
   delay_in_seconds: 0.015

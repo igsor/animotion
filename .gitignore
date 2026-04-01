@@ -1,0 +1,25 @@
+# python runtime files
+__pycache__
+*.pyc
+*.pyo
+
+# development files
+*.pth
+.coverage
+.htmlcov
+.mypy_cache
+.pypirc
+.venv
+bsfs.egg-info
+dev/
+env
+tags
+
+# dist builds
+MANIFEST
+dist/
+build/
+
+# doc builds
+doc/build/
+doc/source/api

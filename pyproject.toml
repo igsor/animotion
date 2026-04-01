@@ -47,15 +47,15 @@ dependency-injector="4.49.0"
 numpy="2.2.6"
 python = "3.10.12"
 pyyaml="6.0.3"
-typer-slim = "0.21.1"
+typer-slim = "0.24.0"
 
 [tool.poetry.group.dev.dependencies]
-build = "1.4.0"
-coverage = "7.13.3"
-mypy = "1.19.1"
-poetry = "2.3.2"
+build = "1.4.2"
+coverage = "7.13.5"
+mypy = "1.20.0"
+poetry = "2.3.3"
 pytest = "9.0.2"
-ruff = "0.15.0"
+ruff = "0.15.8"
 
 [tool.pytest.ini_options]
 testpaths = [ "tests" ]

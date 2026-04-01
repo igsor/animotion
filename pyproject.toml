@@ -1,0 +1,58 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
+
+[project]
+authors = [{name = "Matthias Baumgartner", email = "dev@igsor.net"}]
+description = "A motion-activated video recorder for animal observation."
+dynamic = ["dependencies", "requires-python"]
+include = []
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+name = "animotion"
+readme = "README.md"
+version = "1.0.0"
+
+[project.scripts]
+recorder = "animotion.app.recorder:main"
+
+[tool.coverage.run]
+branch = true
+command_line = "-m pytest"
+data_file = ".coverage"
+dynamic_context = "test_function"
+source = ["animotion"]
+
+[tool.coverage.report]
+show_missing = true
+skip_empty = true
+
+[tool.coverage.html]
+directory = ".htmlcov"
+show_contexts = true
+
+[tool.importlinter]
+include_external_packages = true
+root_package = "bsfs"
+
+[tool.mypy]
+check_untyped_defs = true
+extra_checks = true
+ignore_missing_imports = true
+packages = ["animotion", "tests"]
+plugins = []
+
+[tool.poetry.dependencies]
+python = "3.10.12"
+typer-slim = "0.21.1"
+
+[tool.poetry.group.dev.dependencies]
+build = "1.4.0"
+coverage = "7.13.3"
+mypy = "1.19.1"
+poetry = "2.3.2"
+pytest = "9.0.2"
+ruff = "0.15.0"
+
+[tool.pytest.ini_options]
+testpaths = [ "tests" ]

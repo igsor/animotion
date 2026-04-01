@@ -13,9 +13,13 @@ Clone from the git repository:
     $ git clone https://github.com/igsor/animotion
     $ cd animotion
 
+Install extra dependencies (debian):
+
+    $ sudo ./install_non_python_packages.sh
+
 Set up a virtual environment:
 
-    $ virtualenv .venv
+    $ virtualenv .venv --system-site-packages
     $ source .venv/bin/activate
     $ pip install poetry
 

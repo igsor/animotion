@@ -43,6 +43,7 @@ packages = ["animotion", "tests"]
 plugins = []
 
 [tool.poetry.dependencies]
+numpy="2.2.6"
 python = "3.10.12"
 typer-slim = "0.21.1"
 

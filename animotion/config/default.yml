@@ -34,3 +34,6 @@ trigger:
 
 app:
   video_target_folder: "/tmp/"
+  image_target_folder: "/tmp/"
+  image_interval_in_seconds: 2
+  image_format: "jpg"

@@ -13,6 +13,6 @@ class StateMachineContainer(containers.DeclarativeContainer):
     state_machine = providers.Factory(
         StateMachine,
         trigger=trigger.trigger,
-        on_wait=event_handler.noop,
+        on_wait=event_handler.image_recorder,
         on_observe=event_handler.video_recorder,
     )

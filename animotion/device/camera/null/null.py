@@ -23,6 +23,9 @@ class Null(Camera):
             self._last_image = np.random.random(self.resolution)
         return self._last_image
 
+    def get_high_resolution_image(self) -> npt.NDArray:
+        return np.random.random(self.resolution)
+
     def start_video(self, path: Path) -> None:
         pass
 

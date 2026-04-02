@@ -62,6 +62,9 @@ class PiCamera(Camera):
         width, height = self._lores_resolution
         return self._device.capture_array("lores")[:height, :width]
 
+    def get_high_resolution_image(self) -> npt.NDArray:
+        return self._device.capture_array("main")
+
     def start_video(self, path: Path) -> None:
         self._encoder.output = PyavOutput(str(path) + self._suffix)
         self._device.start_encoder(self._encoder)

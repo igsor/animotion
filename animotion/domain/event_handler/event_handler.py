@@ -7,5 +7,9 @@ class EventHandler(ABC):
         pass
 
     @abstractmethod
+    def step(self) -> None:
+        pass
+
+    @abstractmethod
     def exit(self) -> None:
         pass

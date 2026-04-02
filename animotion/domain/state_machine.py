@@ -26,12 +26,12 @@ class StateMachine:
             _LOGGER.info(f"state transition from {current_state} to {next_state}")
         match (current_state, next_state):
             case (State.WAIT, State.WAIT):
-                pass
+                self.on_wait.step()
             case (State.WAIT, State.OBSERVE):
                 self.on_wait.exit()
                 self.on_observe.enter()
             case (State.OBSERVE, State.OBSERVE):
-                pass
+                self.on_observe.step()
             case (State.OBSERVE, State.WAIT):
                 self.on_observe.exit()
                 self.on_wait.enter()

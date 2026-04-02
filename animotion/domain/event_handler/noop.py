@@ -8,5 +8,8 @@ class Noop(EventHandler):
     def enter(self) -> None:
         pass
 
+    def step(self) -> None:
+        pass
+
     def exit(self) -> None:
         pass

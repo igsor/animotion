@@ -10,6 +10,10 @@ class Camera(ABC):
         pass
 
     @abstractmethod
+    def get_high_resolution_image(self) -> npt.NDArray:
+        pass
+
+    @abstractmethod
     def start_video(self, path: Path) -> None:
         pass
 

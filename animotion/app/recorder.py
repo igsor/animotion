@@ -14,25 +14,30 @@ def main() -> None:
 
 
 def _main(
-    output_folder: Path | None = None,
+    video_output_folder: Path | None = None,
+    image_output_folder: Path | None = None,
     config_file: Path | None = None,
 ) -> None:
     _init(
-        output_folder=output_folder,
+        video_output_folder=video_output_folder,
+        image_output_folder=image_output_folder,
         config_file=config_file,
     )
     _run()
 
 
 def _init(
-    output_folder: Path | None = None,
+    video_output_folder: Path | None = None,
+    image_output_folder: Path | None = None,
     config_file: Path | None = None,
 ) -> None:
     app = AnimotionContainer()
     if config_file is not None:
         _load_config_from_path(app.config, config_file)
-    if output_folder is not None:
-        app.config.app.video_target_folder.from_value(output_folder)
+    if video_output_folder is not None:
+        app.config.app.video_target_folder.from_value(video_output_folder)
+    if image_output_folder is not None:
+        app.config.app.image_target_folder.from_value(image_output_folder)
     app.logging.init_resources()
     app.wire(modules=[__name__])
 

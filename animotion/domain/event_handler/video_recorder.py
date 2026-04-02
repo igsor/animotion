@@ -23,5 +23,8 @@ class VideoRecorder(EventHandler):
         _LOGGER.info(f"Recording video to {target}")
         self.camera.start_video(target)
 
+    def step(self) -> None:
+        pass
+
     def exit(self) -> None:
         self.camera.stop_video()

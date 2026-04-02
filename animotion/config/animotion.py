@@ -2,6 +2,7 @@ from dependency_injector import containers, providers
 
 from animotion.config import DEFAULT_CONFIGURATION_PATH
 from animotion.config.camera import CameraContainer
+from animotion.config.event_handler import EventHandlerContainer
 from animotion.config.logging import LoggingContainer
 from animotion.config.state_machine import StateMachineContainer
 from animotion.config.trigger import TriggerContainer
@@ -23,9 +24,16 @@ class AnimotionContainer(containers.DeclarativeContainer):
         camera=camera,
     )
 
+    event_handler = providers.Container(
+        EventHandlerContainer,
+        config=config,
+        camera=camera,
+    )
+
     state_machine = providers.Container(
         StateMachineContainer,
         config=config,
         camera=camera,
+        event_handler=event_handler,
         trigger=trigger,
     )

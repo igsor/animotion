@@ -16,11 +16,15 @@ def main() -> None:
 def _main(
     video_output_folder: Path | None = None,
     image_output_folder: Path | None = None,
+    hflip: bool | None = None,
+    vflip: bool | None = None,
     config_file: Path | None = None,
 ) -> None:
     _init(
         video_output_folder=video_output_folder,
         image_output_folder=image_output_folder,
+        horizontal_flip=hflip,
+        vertical_flip=vflip,
         config_file=config_file,
     )
     _run()
@@ -29,6 +33,8 @@ def _main(
 def _init(
     video_output_folder: Path | None = None,
     image_output_folder: Path | None = None,
+    horizontal_flip: bool | None = None,
+    vertical_flip: bool | None = None,
     config_file: Path | None = None,
 ) -> None:
     app = AnimotionContainer()
@@ -38,6 +44,10 @@ def _init(
         app.config.app.video_target_folder.from_value(video_output_folder)
     if image_output_folder is not None:
         app.config.app.image_target_folder.from_value(image_output_folder)
+    if horizontal_flip is not None:
+        app.config.camera.horizontal_flip.from_value(horizontal_flip)
+    if vertical_flip is not None:
+        app.config.camera.vertical_flip.from_value(vertical_flip)
     app.logging.init_resources()
     app.wire(modules=[__name__])
 

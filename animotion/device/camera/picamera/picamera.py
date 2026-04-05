@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import ClassVar
+from typing import ClassVar, Final
 
+from libcamera import Transform
 from numpy import typing as npt
 from picamera2 import Picamera2
 from picamera2.encoders import H264Encoder, JpegEncoder, MJPEGEncoder
@@ -12,6 +14,8 @@ from picamera2.outputs import PyavOutput
 
 from animotion.device.camera.picamera.config import Config, VideoConfig
 from animotion.domain.camera import Camera
+
+_LOGGER: Final = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True, slots=True)
@@ -31,6 +35,8 @@ class PiCamera(Camera):
 
     @staticmethod
     def _build_device(config: Config) -> None:
+        device = Picamera2()
+
         main = {
             "size": config.video.resolution,
             "format": config.video.format,
@@ -39,10 +45,18 @@ class PiCamera(Camera):
             "size": config.preview.resolution,
             "format": config.preview.format,
         }
-        device = Picamera2()
-        device.configure(
-            device.create_video_configuration(main, lores=lores),
+        transform = Transform(
+            hflip=config.horizontal_flip,
+            vflip=config.vertical_flip,
         )
+        camera_configuration = device.create_video_configuration(
+            main,
+            lores=lores,
+            transform=transform,
+        )
+
+        _LOGGER.debug(str(camera_configuration))
+        device.configure(camera_configuration)
         device.start()
         return device
 

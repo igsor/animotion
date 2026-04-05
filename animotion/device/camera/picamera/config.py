@@ -20,3 +20,5 @@ class PreviewConfig:
 class Config:
     video: VideoConfig
     preview: PreviewConfig
+    horizontal_flip: bool
+    vertical_flip: bool

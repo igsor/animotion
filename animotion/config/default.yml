@@ -15,8 +15,13 @@ logging:
   loggers:
     animotion:
       level: "INFO"
+    animotion.device.camera.picamera.picamera:
+      level: "DEBUG"
 
 camera:
+  horizontal_flip: false
+  vertical_flip: false
+
   video:
     resolution: [1280, 720]
     format: "RGB888"

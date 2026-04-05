@@ -25,6 +25,8 @@ class CameraContainer(containers.DeclarativeContainer):
         Config,
         video=_video_config,
         preview=_preview_config,
+        horizontal_flip=config.horizontal_flip,
+        vertical_flip=config.vertical_flip,
     )
     pi_camera = providers.Singleton(
         PiCamera.from_config,

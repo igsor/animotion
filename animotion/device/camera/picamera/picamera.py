@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import ClassVar
 
+from libcamera import Transform
 from numpy import typing as npt
 from picamera2 import Picamera2
 from picamera2.encoders import H264Encoder, JpegEncoder, MJPEGEncoder
@@ -39,10 +40,19 @@ class PiCamera(Camera):
             "size": config.preview.resolution,
             "format": config.preview.format,
         }
+        transform = Transform(
+            hflip=False,
+            vflip=False,
+        )
         device = Picamera2()
         device.configure(
-            device.create_video_configuration(main, lores=lores),
+            device.create_video_configuration(
+                main,
+                lores=lores,
+                transform=transform,
+            ),
         )
+
         device.start()
         return device
 

@@ -1,0 +1,9 @@
+[Unit]
+Description=Run animal video capture at startup
+
+[Service]
+ExecStart=/home/<!! INSERT USERNAME HERE !!>/animotion/run-recorder.sh
+User=<!! INSERT USERNAME HERE !!>
+
+[Install]
+WantedBy=default.target

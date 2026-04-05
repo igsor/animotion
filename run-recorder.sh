@@ -1,15 +1,14 @@
 #!/bin/bash
 
 # configuration
-ENV_FOLDER="~/animotion/.venv/"
-OUTPUT_FOLDER="~/animotion/output/"
+PROJECT_FOLDER="/home/<!! INSERT USERNAME HERE !!>/animotion"
+OUTPUT_FOLDER="${PROJECT_FOLDER}/output/"
 IMAGE_OUTPUT_FOLDER="${OUTPUT_FOLDER}/wait/"
 VIDEO_OUTPUT_FOLDER="${OUTPUT_FOLDER}/observe/"
 
 # initialization
-mkdir -p "${OUTPUT_FOLDER}"
 LOG_FILE="${OUTPUT_FOLDER}"/$(date --iso-8601="ns").log
-source "${ENV_FOLDER}/bin/activate"
+source "${PROJECT_FOLDER}/.venv/bin/activate"
 
 # run recorder
 recorder \

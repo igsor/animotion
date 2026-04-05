@@ -50,7 +50,14 @@ This comes in three steps: First, you need a run script, second a systemd unit s
 
 ### run script
 You already have the run script `run-recorder.sh` in the animotion repository folder.
-Two changes may be necessary: Command and paths.
+Two changes may be necessary: Paths and command.
+
+Udate the user part in the `PROJECT_FOLDER`.
+Optionally, you can also change the `OUTPUT_FOLDER` path to wherever you want the logs, images, and videos to be stored.
+At least note the output paths since that's where images and videos will be saved:
+
+    PROJECT_FOLDER="/home/matthias/animotion"
+    OUTPUT_FOLDER="${PROJECT_FOLDER}/output/"
 
 Append the command in `run-recorder.sh` to your needs.
 In particular, add the `--vflip` and `--hflip` options to the `recorder` command depending on how you mount the camera.
@@ -59,14 +66,6 @@ For example, add the `--vflip` line like below if the camera is mounted upside-d
     recorder \
         --vflip \
         ...
-
-No path change should be necessary if you followed this readme exactly.
-If you installed the animotion repository in a different location you must at least adjust the `ENV_FOLDER` and `OUTPUT_FOLDER` paths:
-
-    ENV_FOLDER="~/animotion/.venv/"
-    OUTPUT_FOLDER="~/animotion/output/"
-
-At least note the output paths since that's where images and videos will be dropped!
 
 ### systemd unit specification
 In `animotion.service`, insert the username you chose during the basic OS setup in the two indicated places. This ensures that animotion will run with the correct permissions.

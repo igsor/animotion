@@ -41,8 +41,8 @@ class PiCamera(Camera):
             "format": config.preview.format,
         }
         transform = Transform(
-            hflip=False,
-            vflip=False,
+            hflip=config.horizontal_flip,
+            vflip=config.vertical_flip,
         )
         device = Picamera2()
         device.configure(

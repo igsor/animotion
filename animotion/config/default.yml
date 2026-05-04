@@ -38,7 +38,7 @@ trigger:
   delay_in_seconds: 2
 
 app:
-  video_target_folder: "/tmp/"
-  image_target_folder: "/tmp/"
+  video_target_folder: "/tmp/video"
+  image_target_folder: "/tmp/image"
   image_interval_in_seconds: 2
   image_format: "jpg"

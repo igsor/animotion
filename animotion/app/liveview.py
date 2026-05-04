@@ -37,11 +37,11 @@ def _main(
     app = Flask(__name__)
 
     @app.route("/")
-    def landing() -> None:
+    def landing():
         return _MAIN_PAGE
 
     @app.route("/latest.jpg")
-    def latest_image() -> None:
+    def latest_image():
         return send_file(max(image_dump_folder.iterdir()), mimetype="image/jpg")
 
     app.run(

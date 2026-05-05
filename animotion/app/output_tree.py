@@ -4,6 +4,7 @@ from typing import Final
 
 import typer
 
+_FIRST_SEQUENCE_NUMBER: Final[int] = 0
 _INSTANCE_FOLDER_NAME_PATTERN: Final[str] = "{:05d}"
 
 
@@ -23,10 +24,10 @@ def _next_folder_in_sequence_in(root_folder: Path) -> Path:
                 for entry in root_folder.iterdir()
                 if (sequence_number := _sequence_number_from(entry)) is not None
             ),
-            default=0,
+            default=_FIRST_SEQUENCE_NUMBER,
         )
         if root_folder.exists()
-        else 0
+        else _FIRST_SEQUENCE_NUMBER
     )
     return root_folder / _INSTANCE_FOLDER_NAME_PATTERN.format(
         highest_sequence_number + 1

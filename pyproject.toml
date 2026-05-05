@@ -16,6 +16,7 @@ version = "1.0.0"
 [project.scripts]
 recorder = "animotion.app.recorder:main"
 liveview = "animotion.app.liveview:main"
+output_tree = "animotion.app.output_tree:main"
 
 [tool.coverage.run]
 branch = true

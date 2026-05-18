@@ -187,6 +187,17 @@ Exit the `raspi-config` and reboot to apply all of your canges.
 After the reboot you should see a new access point with the SSID you configured.
 
 
+### Troubleshooting: Raspberry Pi Zero W
+
+The 32-bit Raspberry Pi OS ([Trixie-based lite version](https://downloads.raspberrypi.com/raspios_lite_armhf/images/raspios_lite_armhf-2026-04-21/2026-04-21-raspios-trixie-armhf-lite.img.xz)) doesn't create the wlan0 interface if the network manager is disabled (as you did if you followed the steps above).
+Consequently the access point won't work properly.
+To fix this, create the file `/etc/network/interfaces` with this content:
+
+    iface wlan0 inet static
+    address 192.168.1.42
+    netmask 255.255.255.0
+
+
 ## Development
 To ensure code style discipline, run the following commands:
 

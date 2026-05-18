@@ -1,4 +1,4 @@
 #!/bin/bash
 
 apt update \
-    && apt install -y python3-picamera2
+    && apt install -y libffi-dev python3-picamera2

@@ -82,11 +82,11 @@ Register the unit with systemd:
 
 Reload systemd:
 
-    systemctl daemon-reload
+    sudo systemctl daemon-reload
 
 Start animotion at boot:
 
-    systemctl enable animotion.service
+    sudo systemctl enable animotion.service
 
 
 
@@ -144,18 +144,18 @@ Update the following line in `/etc/defaults/hostapd`:
 
 First, enable the three services on boot:
 
-    systemctl unmask hostapd dnsmasq dhcpcd
-    systemctl enable hostapd dnsmasq dhcpcd
+    sudo systemctl unmask hostapd dnsmasq dhcpcd
+    sudo systemctl enable hostapd dnsmasq dhcpcd
 
 Also, disable the network manager, so that it doesn't connect to a wifi:
 
-    systemctl disable NetworkManager
+    sudo systemctl disable NetworkManager
 
 Note that after these changes you won't be able to easily connect to a wifi for internet after the next reboot.
 In such a case, you'll need to temporarily stop the access point and bring the network manager up again:
 
-    systemctl stop hostapd dnsmasq dhcpcd
-    systemctl start NetworkManager
+    sudo systemctl stop hostapd dnsmasq dhcpcd
+    sudo systemctl start NetworkManager
 
 
 ### Finalization

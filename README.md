@@ -57,7 +57,7 @@ Optionally, you can also change the `OUTPUT_FOLDER` path to wherever you want th
 At least note the output paths since that's where images and videos will be saved:
 
     PROJECT_FOLDER="/home/matthias/animotion"
-    OUTPUT_FOLDER="${PROJECT_FOLDER}/output/"
+    OUTPUT_ROOT="${PROJECT_FOLDER}/output/"
 
 Append the command in `run-recorder.sh` to your needs.
 In particular, add the `--vflip` and `--hflip` options to the `recorder` command depending on how you mount the camera.
@@ -185,6 +185,17 @@ Since you likely won't have a screen attached, you can also disable the graphica
 
 Exit the `raspi-config` and reboot to apply all of your canges.
 After the reboot you should see a new access point with the SSID you configured.
+
+
+### Troubleshooting: Raspberry Pi Zero W
+
+The 32-bit Raspberry Pi OS ([Trixie-based lite version](https://downloads.raspberrypi.com/raspios_lite_armhf/images/raspios_lite_armhf-2026-04-21/2026-04-21-raspios-trixie-armhf-lite.img.xz)) doesn't create the wlan0 interface if the network manager is disabled (as you did if you followed the steps above).
+Consequently the access point won't work properly.
+To fix this, create the file `/etc/network/interfaces` with this content:
+
+    iface wlan0 inet static
+    address 192.168.1.42
+    netmask 255.255.255.0
 
 
 ## Development

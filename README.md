@@ -57,7 +57,7 @@ Optionally, you can also change the `OUTPUT_FOLDER` path to wherever you want th
 At least note the output paths since that's where images and videos will be saved:
 
     PROJECT_FOLDER="/home/matthias/animotion"
-    OUTPUT_FOLDER="${PROJECT_FOLDER}/output/"
+    OUTPUT_ROOT="${PROJECT_FOLDER}/output/"
 
 Append the command in `run-recorder.sh` to your needs.
 In particular, add the `--vflip` and `--hflip` options to the `recorder` command depending on how you mount the camera.
